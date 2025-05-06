@@ -5,6 +5,7 @@ public class MoveCursorUpCommand implements Command {
         this.grid = grid;
     }
 
+    @Override
     public void execute() {
         grid.moveCursor(0, -1);
     }

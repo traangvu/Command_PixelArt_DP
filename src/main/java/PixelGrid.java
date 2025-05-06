@@ -1,6 +1,7 @@
 public class PixelGrid {
     private final boolean[][] grid = new boolean[8][8];
-    private int cursorX = 0, cursorY = 0;
+    private int cursorX = 0;
+    private int cursorY = 0;
 
     public void moveCursor(int dx, int dy) {
         cursorX = Math.max(0, Math.min(7, cursorX + dx));

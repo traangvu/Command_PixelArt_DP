@@ -27,12 +27,12 @@ public class PixelArtEditor extends Application {
 
         Button generateButton = new Button("Create Code");
         generateButton.setOnAction(e -> {
-            new GenerateCodeCommand(grid).execute();
+            new GenerateCodeCommand(grid, this).execute();
         });
 
         VBox root = new VBox(pane, generateButton);
         Scene scene = new Scene(root);
-        updateGrid();
+        updateGrid(); // Initial grid display
 
         scene.setOnKeyPressed(event -> {
             Command cmd = null;
@@ -59,7 +59,7 @@ public class PixelArtEditor extends Application {
         stage.show();
     }
 
-    private void updateGrid() {
+    void updateGrid() {
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 8; x++) {
                 if (grid.isPixelOn(x, y)) {

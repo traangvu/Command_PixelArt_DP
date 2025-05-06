@@ -1,10 +1,13 @@
 public class GenerateCodeCommand implements Command {
     private final PixelGrid grid;
+    private final PixelArtEditor editor;
 
-    public GenerateCodeCommand(PixelGrid grid) {
+    public GenerateCodeCommand(PixelGrid grid, PixelArtEditor editor) {
         this.grid = grid;
+        this.editor = editor;
     }
 
+    @Override
     public void execute() {
         boolean[][] g = grid.getGridCopy();
         System.out.println("int[][] pixelArt = {");
@@ -17,5 +20,7 @@ public class GenerateCodeCommand implements Command {
             System.out.println(y < 7 ? "}," : "}");
         }
         System.out.println("};");
+
+        editor.updateGrid(); // Update the grid in the UI
     }
 }
