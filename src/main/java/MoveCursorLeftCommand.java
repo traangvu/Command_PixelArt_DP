@@ -7,6 +7,6 @@ public class MoveCursorLeftCommand implements Command {
 
     @Override
     public void execute() {
-        grid.moveCursor(-1, 0);
+        grid.moveCursorLeft();
     }
 }

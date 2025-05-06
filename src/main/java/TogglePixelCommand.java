@@ -7,6 +7,8 @@ public class TogglePixelCommand implements Command {
 
     @Override
     public void execute() {
-        grid.togglePixel();
+        int x = grid.getCursorX();
+        int y = grid.getCursorY();
+        grid.togglePixel(x, y);
     }
 }

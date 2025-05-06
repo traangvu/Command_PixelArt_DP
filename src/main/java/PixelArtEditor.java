@@ -27,27 +27,36 @@ public class PixelArtEditor extends Application {
 
         Button generateButton = new Button("Create Code");
         generateButton.setOnAction(e -> {
-            new GenerateCodeCommand(grid, this).execute();
+            new GenerateCodeCommand(grid).execute();
         });
 
         VBox root = new VBox(pane, generateButton);
         Scene scene = new Scene(root);
-        updateGrid(); // Initial grid display
+        updateGrid();
+
+        // Setting focus to the root node
+        root.setFocusTraversable(true);
 
         scene.setOnKeyPressed(event -> {
             Command cmd = null;
             if (event.getCode() == KeyCode.UP) {
                 cmd = new MoveCursorUpCommand(grid);
+                System.out.println("Up arrow pressed");
             } else if (event.getCode() == KeyCode.DOWN) {
                 cmd = new MoveCursorDownCommand(grid);
+                System.out.println("Down arrow pressed");
             } else if (event.getCode() == KeyCode.LEFT) {
                 cmd = new MoveCursorLeftCommand(grid);
+                System.out.println("Left arrow pressed");
             } else if (event.getCode() == KeyCode.RIGHT) {
                 cmd = new MoveCursorRightCommand(grid);
+                System.out.println("Right arrow pressed");
             } else if (event.getCode() == KeyCode.SPACE) {
                 cmd = new TogglePixelCommand(grid);
+                System.out.println("Space pressed");
             }
 
+            // Execute command if it's not null
             if (cmd != null) {
                 cmd.execute();
                 updateGrid();
@@ -80,6 +89,6 @@ public class PixelArtEditor extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }

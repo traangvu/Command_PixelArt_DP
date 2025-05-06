@@ -3,50 +3,36 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>Command_PixelArt_DP</artifactId>
+    <groupId>com.example</groupId>
+    <artifactId>pixel-art-editor</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <javafx.version>21</javafx.version>
+        <java.version>11</java.version> <!-- or your Java version -->
     </properties>
 
     <dependencies>
-        <!-- JavaFX modules -->
+        <!-- JavaFX dependencies -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>${javafx.version}</version>
+            <version>21</version> <!-- Use the correct version of JavaFX -->
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>${javafx.version}</version>
+            <version>17</version> <!-- Match the JavaFX version you are using -->
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Maven compiler plugin -->
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                </configuration>
-            </plugin>
-
-            <!-- JavaFX Maven plugin for running the app -->
+            <!-- JavaFX Maven Plugin for running the JavaFX application -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.8</version>
+                <version>0.0.5</version>
                 <configuration>
-                    <mainClass>PixelArtEditor</mainClass>
+                    <mainClass>PixelArtEditor</mainClass> <!-- Your main class path -->
                 </configuration>
             </plugin>
         </plugins>

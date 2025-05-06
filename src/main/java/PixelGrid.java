@@ -3,17 +3,12 @@ public class PixelGrid {
     private int cursorX = 0;
     private int cursorY = 0;
 
-    public void moveCursor(int dx, int dy) {
-        cursorX = Math.max(0, Math.min(7, cursorX + dx));
-        cursorY = Math.max(0, Math.min(7, cursorY + dy));
-    }
-
-    public void togglePixel() {
-        grid[cursorY][cursorX] = !grid[cursorY][cursorX];
-    }
-
     public boolean isPixelOn(int x, int y) {
         return grid[y][x];
+    }
+
+    public void togglePixel(int x, int y) {
+        grid[y][x] = !grid[y][x];
     }
 
     public int getCursorX() {
@@ -24,11 +19,27 @@ public class PixelGrid {
         return cursorY;
     }
 
+    public void moveCursorUp() {
+        if (cursorY > 0) cursorY--;
+    }
+
+    public void moveCursorDown() {
+        if (cursorY < 7) cursorY++;
+    }
+
+    public void moveCursorLeft() {
+        if (cursorX > 0) cursorX--;
+    }
+
+    public void moveCursorRight() {
+        if (cursorX < 7) cursorX++;
+    }
+
     public boolean[][] getGridCopy() {
-        boolean[][] copy = new boolean[8][8];
+        boolean[][] gridCopy = new boolean[8][8];
         for (int y = 0; y < 8; y++) {
-            System.arraycopy(grid[y], 0, copy[y], 0, 8);
+            System.arraycopy(grid[y], 0, gridCopy[y], 0, 8);
         }
-        return copy;
+        return gridCopy;
     }
 }
