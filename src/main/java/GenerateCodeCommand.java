@@ -7,17 +7,15 @@ public class GenerateCodeCommand implements Command {
 
     @Override
     public void execute() {
-        boolean[][] gridCopy = grid.getGridCopy();
-        StringBuilder code = new StringBuilder("int[][] pixelArt = {\n");
-        for (int i = 0; i < 8; i++) {
-            code.append("    {");
-            for (int j = 0; j < 8; j++) {
-                code.append(gridCopy[i][j] ? "1" : "0");
-                if (j < 7) code.append(", ");
+        System.out.println("int[][] pixelArt = {");
+        for (int y = 0; y < 8; y++) {
+            System.out.print("    {");
+            for (int x = 0; x < 8; x++) {
+                System.out.print(grid.isPixelOn(x, y) ? "1" : "0");
+                if (x < 7) System.out.print(", ");
             }
-            code.append("},\n");
+            System.out.println("},");
         }
-        code.append("};");
-        System.out.println(code.toString());
+        System.out.println("};");
     }
 }

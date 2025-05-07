@@ -1,14 +1,34 @@
 public class PixelGrid {
-    private final boolean[][] grid = new boolean[8][8];
+    private static final int SIZE = 8;
+    private final boolean[][] grid = new boolean[SIZE][SIZE];
     private int cursorX = 0;
     private int cursorY = 0;
 
     public boolean isPixelOn(int x, int y) {
-        return grid[y][x];
+        if (isInBounds(x, y)) {
+            return grid[y][x];
+        }
+        return false;
     }
 
     public void togglePixel(int x, int y) {
-        grid[y][x] = !grid[y][x];
+        if (isInBounds(x, y)) {
+            grid[y][x] = !grid[y][x];
+        }
+    }
+
+    public void setPixel(int x, int y, boolean value) {
+        if (isInBounds(x, y)) {
+            grid[y][x] = value;
+        }
+    }
+
+    public boolean[][] getGridCopy() {
+        boolean[][] copy = new boolean[SIZE][SIZE];
+        for (int y = 0; y < SIZE; y++) {
+            System.arraycopy(grid[y], 0, copy[y], 0, SIZE);
+        }
+        return copy;
     }
 
     public int getCursorX() {
@@ -24,7 +44,7 @@ public class PixelGrid {
     }
 
     public void moveCursorDown() {
-        if (cursorY < 7) cursorY++;
+        if (cursorY < SIZE - 1) cursorY++;
     }
 
     public void moveCursorLeft() {
@@ -32,14 +52,10 @@ public class PixelGrid {
     }
 
     public void moveCursorRight() {
-        if (cursorX < 7) cursorX++;
+        if (cursorX < SIZE - 1) cursorX++;
     }
 
-    public boolean[][] getGridCopy() {
-        boolean[][] gridCopy = new boolean[8][8];
-        for (int y = 0; y < 8; y++) {
-            System.arraycopy(grid[y], 0, gridCopy[y], 0, 8);
-        }
-        return gridCopy;
+    private boolean isInBounds(int x, int y) {
+        return x >= 0 && x < SIZE && y >= 0 && y < SIZE;
     }
 }

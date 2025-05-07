@@ -43,6 +43,7 @@ public class PixelArtEditor extends Application {
         log("Application started and grid initialized.");
 
         root.setFocusTraversable(true);
+        root.requestFocus(); // Ensure key events are captured
 
         scene.setOnKeyPressed(event -> {
             Command cmd = null;
@@ -82,7 +83,6 @@ public class PixelArtEditor extends Application {
         stage.setScene(scene);
         stage.setTitle("Pixel Art Editor");
         stage.show();
-        root.requestFocus();  // Request focus so key events work
     }
 
     void updateGrid() {

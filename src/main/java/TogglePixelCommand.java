@@ -9,6 +9,7 @@ public class TogglePixelCommand implements Command {
     public void execute() {
         int x = grid.getCursorX();
         int y = grid.getCursorY();
-        grid.togglePixel(x, y);
+        boolean isOn = grid.isPixelOn(x, y);
+        grid.setPixel(x, y, !isOn);
     }
 }
